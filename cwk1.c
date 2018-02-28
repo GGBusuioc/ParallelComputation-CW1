@@ -132,7 +132,7 @@ int main( int argc, char** argv )
   card temp;
   #pragma omp parallel for
 	// loop over half of the deck
-	// each element in the first half of the deck will be swapped with the
+	// the ith element in the first half will be swapped with the ith element in the second half
   for(i = 0; i< deckSize/2; i++)
 	  {
 	    temp = deck[i];
