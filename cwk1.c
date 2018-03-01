@@ -132,12 +132,13 @@ int main( int argc, char** argv )
   #pragma omp parallel for
 	// loop over half of the deck
 	// the ith element in the first half will be swapped with the ith element in the second half
-	// the swapping is done using the copyCard method already implemented
   for(i = 0; i< deckSize/2; i++)
 	  {
 	    temp = deck[i];
-			copyCard( &deck[i], &deck[deckSize/2+i]);
-	    copyCard( &deck[deckSize/2+i], &temp );
+	    // copyCard( &deck[deckSize/2+i], &temp );
+			// copyCard( &deck[i], &deck[deckSize/2+i]);
+			deck[i] = deck[deckSize/2+i];
+			deck[deckSize/2+i] = temp;
 		}
 
 	printf("Deck after shuffling");
