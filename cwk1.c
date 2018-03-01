@@ -126,13 +126,13 @@ int main( int argc, char** argv )
 	printDeck();
 
 	// ... (add code to shuffle the deck).
-	//
 
 	// declare a card temporary variable to be used on the shuffling process
   card temp;
   #pragma omp parallel for
 	// loop over half of the deck
 	// the ith element in the first half will be swapped with the ith element in the second half
+	// the swapping is done using the copyCard method already implemented
   for(i = 0; i< deckSize/2; i++)
 	  {
 	    temp = deck[i];
@@ -140,8 +140,6 @@ int main( int argc, char** argv )
 	    copyCard( &deck[deckSize/2+i], &temp );
 		}
 
-	// Remove cards from the deck.
-	//
 	printf("Deck after shuffling");
   printDeck();
 
@@ -153,7 +151,6 @@ int main( int argc, char** argv )
     for (i=0; i<numToRemove; i++)
     popCardFromDeck();
     //numToRemove--;
-
 		// Print the deck after the removal. You do not need to parallelise this.
 		printf( "\nAfter removal of %d cards:\n", numToRemove );
 		printDeck();
